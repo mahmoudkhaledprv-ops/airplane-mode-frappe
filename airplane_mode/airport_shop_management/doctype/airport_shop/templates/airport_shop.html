@@ -1,0 +1,33 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<div class="container py-5">
+
+    <h1>{{ doc.shop_name }}</h1>
+
+    <p class="text-muted">
+        {{ doc.shop_description or "" }}
+    </p>
+
+    <hr>
+
+    <p><strong>Airport:</strong> {{ doc.airport }}</p>
+    <p><strong>Shop Type:</strong> {{ doc.shop_type }}</p>
+    <p><strong>Area:</strong> {{ doc.area }} m²</p>
+    <p><strong>Location:</strong> {{ doc.shop_location or "Not specified" }}</p>
+
+    <a href="/shops" class="btn btn-secondary">
+        Back to Shops
+    </a>
+
+    <a
+        href="/shop-interest/new?shop={{ doc.name }}"
+        class="btn btn-primary"
+    >
+        I'm Interested
+    </a>
+
+</div>
+
+{% endblock %}

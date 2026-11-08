@@ -277,3 +277,21 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+
+fixtures = [{'dt': 'Role', 'filters': [['role_name', 'in', ['Airport Authority Personnel', 'Fleet Manager', 'Travel Agent', 'Flight Crew Member']]]}]
+
+
+# Generate rent payments on the first day of every month.
+# Scheduled jobs for Airport Shop Management.
+scheduler_events = {
+    "cron": {
+        # Generate monthly rent payments on the first day of each month.
+        "0 0 1 * *": [
+            "airplane_mode.airport_shop_management.rent_tasks.generate_monthly_rent"
+        ]
+    },
+    "daily": [
+        "airplane_mode.airport_shop_management.shop_occupancy.sync_all_shops"
+    ],
+}
